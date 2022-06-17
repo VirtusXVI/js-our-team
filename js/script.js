@@ -35,6 +35,7 @@ let teamMembers = [
         photo: "img/barbara-ramos-graphic-designer.jpg"
     }
 ]
+membersGeneration();
 // chiamo la funzione members membersGeneration
 
 // Una volta definita la struttura dati, prendendo come riferimento la card di esempio presente nell'html, stampare dinamicamente una card per ogni membro del team.
