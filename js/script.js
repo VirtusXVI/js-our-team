@@ -2,7 +2,7 @@
 // Aggiungere un file js in cui definire un array di oggetti che rappresentano i membri del team. Ogni membro ha le informazioni necessarie per stampare la relativa card: Nome, Ruolo e Foto.
 let container = document.querySelector(".team-container");
 let button = document.querySelector("#addMemberButton");
-
+// creo un array di oggetti che contiene NamedNodeMap,ruolo e immagine
 let teamMembers = [
     {
         name: "Wayne Barnett",
@@ -35,12 +35,14 @@ let teamMembers = [
         photo: "img/barbara-ramos-graphic-designer.jpg"
     }
 ]
-membersGeneration();
+// chiamo la funzione members membersGeneration
 
 // Una volta definita la struttura dati, prendendo come riferimento la card di esempio presente nell'html, stampare dinamicamente una card per ogni membro del team.
 
 function membersGeneration(){
+    // scorro con un ciclo for l'array di oggetti
     for(let i = 0; i < teamMembers.length; i++){
+        // newCard contiene il codice HTML che andrò ad inserire nel file index.html
         let newCard = 
         `<div class="team-card">
                 <div class="card-image">
@@ -51,22 +53,26 @@ function membersGeneration(){
                     <p>${teamMembers[i].role}</p>
                 </div>
             </div>`
+            // inserisco nel file HTML il contenuto di newcard
         container.innerHTML += newCard;
-        console.log(teamMembers[i].name,teamMembers[i].role,teamMembers[i].photo);
     }
 }
 
 button.addEventListener("click", function(){
+    // le variabili name role e image contengono i dati inseriti nel form
     let name = document.querySelector("#name").value;
     let role = document.querySelector("#role").value;
     let image = document.querySelector("#image").value;
-    
+    // inserisco i dati dal form in un oggetto
     let newTeamMember = {
         name: name,
         role: role,
         photo: `img/${image}"`
     }
+    // pusho l'oggetto nell'array
     teamMembers.push(newTeamMember);
+    // clearo la sezione che contiene tutte le cards del team
     container.innerHTML = "";
+    // chiamo la funzione membersGeneration per reinserire tutte le vecchie cards più quella nuova
     membersGeneration();
 })
