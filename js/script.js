@@ -1,8 +1,4 @@
 // Viene fornito un layout di base in cui è presente una card di esempio inserita staticamente nell’html. Questa card serve solo come timbro del markup necessario per ottenere il risultato finale e dovrà quindi essere rimossa dall’html.
-
-
-
-
 // Aggiungere un file js in cui definire un array di oggetti che rappresentano i membri del team. Ogni membro ha le informazioni necessarie per stampare la relativa card: Nome, Ruolo e Foto.
 let container = document.querySelector(".team-container");
 let button = document.querySelector("#addMemberButton");
@@ -48,7 +44,7 @@ function membersGeneration(){
         let newCard = 
         `<div class="team-card">
                 <div class="card-image">
-                    <img src="${teamMembers[i].photo}"/>
+                    <img src="${teamMembers[i].photo}">
                 </div>
                 <div class="card-text">
                     <h3>${teamMembers[i].name}</h3>
@@ -56,17 +52,19 @@ function membersGeneration(){
                 </div>
             </div>`
         container.innerHTML += newCard;
+        console.log(teamMembers[i].name,teamMembers[i].role,teamMembers[i].photo);
     }
 }
+
 button.addEventListener("click", function(){
     let name = document.querySelector("#name").value;
     let role = document.querySelector("#role").value;
     let image = document.querySelector("#image").value;
-    console.log(name,role,image);
+    
     let newTeamMember = {
         name: name,
         role: role,
-        image: `<img src="img/${image}"/>`
+        photo: `img/${image}"`
     }
     teamMembers.push(newTeamMember);
     container.innerHTML = "";
